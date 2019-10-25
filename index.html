@@ -10,18 +10,14 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 </head>
-
 <div id="app">
-<<<<<<< HEAD
     <input type="text" class="form-control" v-model="criterioDeBusqueda"
-        placeholder="Ingresar un criterio de busqueda...">
-=======
-    <input type="text" class="form-control" v-model="criterioDeBusqueda" placeholder="Ingresar un criterio de busqueda...">
->>>>>>> 94e792f8f98151ecf714bf809555c4ada257b918
+        placeholder="Ingresar un criterio de busqueda..." id="firstInput" onkeypress="haymovimiento()">
+    <input type="text" class="form-control" v-model="criterioDeBusqueda" placeholder="Ingresar un criterio de busqueda..." id="secondInput" onkeypress="haymovimiento()"> 
     <br>
-    <div class="card-deck">
+    <div class="card-deck" id="deck" style="display:none;">
         <div class="card" v-for="persona in personasFiltradas">
-            <div class="card-body">
+            <div class="card-body" >
                 <h5 class="card-title">{{getNombreCompleto(persona)}}</h5>
                 <p class="card-text">dni {{persona.dni}}</p>
                 <a href="#" class="card-link">{{persona.correo}}</a>
@@ -99,10 +95,8 @@
                     { nombre: 'Francisco', apellido: 'Agraz', dni: 40949755, correo: 'franciscoagraz98@gmail.com'},
                     { nombre: 'Leandro', apellido: 'Montesoro', dni: 37942231, correo: 'montesoro.leandro@gmail.com'},
 					{ nombre: 'Emiliano', apellido: 'Carlucci', dni: 36156652, correo: 'emii.carlucci91@gmail.com'},
-					{ nombre: 'Esteban', apellido: 'Rodriguez', dni: 30513759, correo: 'etyrider@hotmail.com'}
+					{ nombre: 'Esteban', apellido: 'Rodriguez', dni: 30513759, correo: 'etyrider@hotmail.com'},
 					{ nombre: 'Eleazar', apellido: 'Tracana', dni: 95784543, correo: 'eleazartracana@gmail.com'}
-
-
                 ]
         },
         computed: {
@@ -120,4 +114,20 @@
 
         }
     });
+		function haymovimiento()
+		{
+		 var input = document.getElementById("firstInput");
+		 var input_ = document.getElementById("secondInput");
+		 var deck = document.getElementById("deck");
+		 
+		 if(input.value == "" && input_.value == "")
+		 {
+			deck.style.display = "none";
+		 }
+		 else
+		 {
+			deck.style.display = "block";
+		 }
+		 
+		}
 </script>
